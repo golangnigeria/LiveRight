@@ -1,0 +1,10 @@
+create_table("vendors") {
+  t.Column("name", "string", {null: false})
+  t.Column("email", "string", {null: false, unique: true})
+  t.Column("phone", "string", {})
+  t.Column("location", "string", {})
+  t.Column("verified", "boolean", {default: false})
+  t.Column("logo_url", "string", {size: 512})
+  t.Column("wallet_balance", "decimal", {precision: 12, scale: 2, default: 0.0})
+  t.Timestamps()
+}

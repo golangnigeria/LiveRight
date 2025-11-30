@@ -1,0 +1,11 @@
+create_table("investments") {
+  t.Column("user_id", "integer", {null: false})
+  t.Column("farm_id", "integer", {null: false})
+  t.Column("units", "integer", {null: false})
+  t.Column("amount_paid", "decimal", {precision: 12, scale: 2})
+  t.Column("investment_date", "timestamp", {})
+  t.Column("redeemed", "boolean", {default: false})
+  t.Timestamps()
+}
+add_index("investments", "user_id")
+add_index("investments", "farm_id")

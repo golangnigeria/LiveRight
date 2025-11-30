@@ -1,0 +1,14 @@
+create_table("users") {
+  t.Column("id", "integer", {"primary": true})
+  t.Column("full_name", "string", {"null": false})
+  t.Column("email", "string", {"unique": true, "null": false})
+  t.Column("phone", "string", {"unique": true, "null": false})
+  t.Column("password", "string", {"null": false})
+  t.Column("roles", "text[]", {"default_raw": "ARRAY['farmer']"})
+  t.Column("wallet_balance", "integer", {"default": 0, "null": false})
+  t.Column("activated", "boolean", {"default": false, "null": false})
+  t.Column("version", "integer", {"default": 1, "null": false})
+  t.Column("referred_by", "string", {"null": true})
+  t.Column("created_at", "timestamp", {"default_raw": "NOW()", "null": false})
+  t.Column("updated_at", "timestamp", {"default_raw": "NOW()", "null": false})
+}

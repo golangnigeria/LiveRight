@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+/* Drifting clouds background */
+.clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: url('https://cdn.pixabay.com/photo/2012/04/14/16/26/clouds-34466_1280.png ') repeat-x;
+  background-size: 200px auto;
+  opacity: 0.1;
+  animation: cloudsMove 120s linear infinite;
+  z-index: 0;
+}
+
+@keyframes cloudsMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 2000px 0;
+  }
+}

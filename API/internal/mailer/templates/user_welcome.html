@@ -1,0 +1,63 @@
+{{define "subject"}}Welcome to MyNneFarm!{{end}}
+
+{{define "plainBody"}}
+Hi {{.FullName}},
+
+Thanks for signing up for MyNneFarm — where agriculture meets opportunity!
+
+Your user ID is: {{.ID}}
+
+You can log in to your dashboard to start exploring investment and farming options.
+
+Let’s grow together 🌱
+
+Cheers,  
+The MyNneFarm Team  
+https://mynnefarm.com
+{{end}}
+
+{{define "htmlBody"}}
+<!doctype html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Welcome to MyNneFarm</title>
+</head>
+
+<body style="font-family: sans-serif; line-height: 1.6; background-color: #f9fafb; color: #111827; padding: 24px;">
+  <div style="max-width: 600px; margin: auto; background: #ffffff; border-radius: 8px; padding: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+
+    <!-- Logo (Optional) -->
+    <div style="text-align: center; margin-bottom: 24px;">
+      <img src="https://mynnefarm.com/logo.png" alt="MyNneFarm Logo" style="height: 50px;" />
+    </div>
+
+    <p style="font-size: 18px;">Hi {{.FullName}},</p>
+
+    <p>Welcome to <strong>MyNneFarm</strong> — where agriculture meets opportunity! We’re excited to have you on board.</p>
+
+    <p>Your user ID is: <strong>{{.ID}}</strong></p>
+
+    <div style="text-align: center; margin: 30px 0;">
+      <a href="https://mynnefarm.com/dashboard" style="background-color: #4CAF50; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">Visit Your Dashboard</a>
+    </div>
+
+   {{if .ReferredBy}}
+    <p>You were referred by: <strong>{{.ReferredBy}}</strong>. You may be eligible for special bonuses or rewards!</p>
+    {{end}}
+    <p>Feel free to explore your dashboard to start investing in and managing your farming options.</p>
+
+    <p>Let’s grow together 🌱</p>
+
+    <p>Cheers,<br>The MyNneFarm Team</p>
+
+    <hr style="margin-top: 40px; border: none; border-top: 1px solid #e5e7eb;" />
+
+    <small style="color: #6b7280;">You are receiving this email because you registered an account on <a href="https://mynnefarm.com">MyNneFarm</a>.</small>
+  </div>
+</body>
+
+</html>
+{{end}}

@@ -1,0 +1,9 @@
+create_table("promotion_codes") {
+  t.Column("id", "integer", {"primary": true})
+  t.Column("code", "string", {"null": false, "unique": true})
+  t.Column("discount_percent", "integer", {"default": 0, "null": false})
+  t.Column("max_uses", "integer", {"default": 1, "null": false})
+  t.Column("expires_at", "timestamp", {"null": true})
+  t.Column("created_at", "timestamp", {"default_raw": "NOW()", "null": false})
+  t.Column("updated_at", "timestamp", {"default_raw": "NOW()", "null": false})
+}

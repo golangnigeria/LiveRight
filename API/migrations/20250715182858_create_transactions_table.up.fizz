@@ -1,0 +1,11 @@
+create_table("transactions") {
+  t.Column("user_id", "uuid", {null: false})
+  t.Column("farm_id", "int", {null: true})
+  t.Column("vendor_id", "int", {null: true})
+  t.Column("type", "string", {null: false}) 
+  t.Column("reference", "string", {null: false, unique: true})
+  t.Column("amount", "float", {null: false})
+  t.Column("status", "string", {null: false})
+  t.Column("meta", "jsonb", {})
+  t.Timestamps()
+}

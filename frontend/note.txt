@@ -1,0 +1,3 @@
+npm execution script = Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+1f87de4dec9bdb

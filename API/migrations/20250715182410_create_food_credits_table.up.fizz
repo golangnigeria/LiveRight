@@ -1,0 +1,9 @@
+create_table("food_credits") {
+  t.Column("user_id", "uuid", {null: false})
+  t.Column("credit_amount", "decimal", {precision: 12, scale: 2})
+  t.Column("source_farm", "integer", {})
+  t.Column("credited_at", "timestamp", {})
+  t.Column("is_redeemed", "boolean", {default: false})
+  t.Timestamps()
+}
+add_index("food_credits", "user_id")
