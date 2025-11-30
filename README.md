@@ -1,140 +1,145 @@
-# 🌾 MyNneFarm
+# 🏥 LiveRight
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/your-repo)  
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)  
-[![Made With Go](https://img.shields.io/badge/back-end-Go-blue)](https://go.dev)  
-[![Frontend](https://img.shields.io/badge/front-end-React-lightblue)](https://reactjs.org)  
+[![Back-End](https://img.shields.io/badge/back-end-Go-blue)](https://go.dev)  
+[![Front-End](https://img.shields.io/badge/front-end-React-lightblue)](https://reactjs.org)  
 [![Deploy](https://img.shields.io/badge/deploy-Railway/Vercel-black)](https://vercel.com)  
 
-> _"Invest in Farms. Earn in Food."_  
-> Building an ecosystem that connects **farmers, investors, diaspora, and food markets** into a sustainable agri-finance loop.  
+> _"Access healthcare anytime, anywhere."_  
+> LiveRight is a **digital healthcare ecosystem** connecting **patients, doctors, labs, pharmacies, and insurers** through a **secure, seamless, and cashless platform**.  
 
 ---
 
 ## 🧭 Overview
 
-**MyNneFarm** is an **agri-fintech platform** designed to make food production profitable and food access affordable.  
-It connects **urban Nigerians and diaspora communities** with rural farmers through **farm investments**, offering returns in the form of **Food Credits** redeemable on our marketplace or convertible to cash.  
+**LiveRight** is designed to make healthcare **accessible, affordable, and seamless**. It enables patients to:  
 
-Our ecosystem is built to:  
+- Book **appointments** and teleconsultations  
+- Pay for services via a **LiveRight Card (LRC)**  
+- Access **lab results** and diagnostic services  
+- Manage health records securely  
+- Integrate **insurance claims and co-pays** automatically  
 
-- 🌾 Empower **farmers** with capital access  
-- 💰 Reward **investors** with ROI in food or money  
-- 🛒 Support **consumers** with discounted food access  
-- 🌍 Enable **diaspora Nigerians** to directly support their families  
+The ecosystem also supports **doctors, hospitals, labs, pharmacies, and insurers** to improve service delivery, billing, and patient retention.  
+
+---
+
+## 💳 LiveRight Card (LRC)
+
+The **LiveRight Card (LRC)** acts as a **digital health wallet**:
+
+- Preloaded credits for consultations, lab tests, and medications  
+- Cashless payments across hospitals, labs, and pharmacies  
+- Discounts and priority access for cardholders  
+- Automated insurance claim handling  
+- Rewards & loyalty points for regular usage  
+
+**Example Benefits:**  
+
+- $50/month → 5 consultations + 2 lab tests + pharmacy discounts  
+- Track usage, view balance, and redeem rewards  
+- Corporate health packages and family plans  
 
 ---
 
 ## 📈 Business Model
 
 ### 🔹 Revenue Streams
-1. **Investment & Transaction Fees**  
-   - 2–5% fee per investment transaction  
 
-2. **Food Credit Redemption & Cash-Outs**  
-   - 0% fee if redeemed for food  
-   - 5–7% fee if converted to cash  
-
-3. **Marketplace Commissions**  
-   - 5–10% commission on sales from verified vendors  
-
-4. **Farmer Services & Premium Listings**  
-   - Paid visibility (featured farms, verified badges)  
-   - Farm audits, insurance, warehousing services  
-
-5. **Diaspora Packages**  
-   - Subscription plans for overseas Nigerians (e.g., $50/month = food credits for family)  
-
-6. **Data & Analytics (Future Stream)**  
-   - Insights for NGOs, insurers, government, and agribusinesses  
+1. **Consultation & Appointment Fees** – 5–10% per booking  
+2. **Lab Services & Diagnostics** – Commission per test  
+3. **Telemedicine Subscriptions** – Monthly plans for patients  
+4. **Doctor & Clinic Premium Listings** – Featured profiles & verified badges  
+5. **Insurance Integration Fees** – Fee per claim processed  
+6. **LiveRight Card Top-Up Fees** – 1–3% per top-up  
+7. **Loyalty & Data Analytics (Future)** – Insights for providers and insurers  
 
 ---
 
 ## 🧩 Business Model Canvas (BMC)
 
 ### Key Partners
-- Farmers & cooperatives  
-- Food vendors  
-- Logistics firms  
-- Insurance companies  
-- NGOs & government  
+- Hospitals & clinics  
+- Independent doctors  
+- Diagnostic labs  
+- Pharmacies  
+- Insurance providers  
+- Government & NGOs  
 
 ### Key Activities
-- Farm listing & vetting  
-- Wallet & food credit system  
-- Marketplace operations  
-- Payment processing  
-- Data analytics  
+- Appointment booking & teleconsultations  
+- **LiveRight Card wallet system**  
+- Lab & pharmacy integration  
+- Payment processing & insurance claims  
+- Patient data analytics and dashboards  
 
 ### Value Propositions
-- **Farmers**: Access to capital without traditional loans  
-- **Investors**: ROI in food or cash  
-- **Diaspora**: Direct family food support  
-- **Consumers**: Affordable food at scale  
-- **Vendors**: New customer base  
+- **Patients**: Cashless, prepaid healthcare with rewards  
+- **Doctors & Labs**: Guaranteed payment, workflow efficiency  
+- **Insurance Providers**: Real-time claim processing  
+- **Platform**: Recurring revenue and high patient retention  
 
 ### Customer Segments
-- Urban Nigerians  
-- Nigerian diaspora  
-- Rural farmers  
-- Food vendors  
+- Urban & rural patients  
+- Hospitals & clinics  
+- Diagnostic labs & pharmacies  
+- Insurance providers  
+- Corporate clients & families  
 
 ### Customer Relationships
 - Transparent dashboards  
-- Trust-building through audits  
-- Community engagement  
-- Loyalty & referral programs  
+- Appointment reminders & notifications  
+- Loyalty programs & rewards  
+- Community engagement & reviews  
 
 ### Channels
-- Web app (React + Tailwind)  
-- Mobile-first PWA  
+- Web app (React + Tailwind CSS)  
+- Mobile-first Progressive Web App (PWA)  
 - Social media campaigns  
-- Local farmer agents  
-
-### Revenue Streams
-- Investment fees  
-- Cash-out fees  
-- Vendor commissions  
-- Premium listings  
-- Diaspora packages  
-- Data monetization  
+- Health outreach agents  
 
 ### Cost Structure
 - Tech development & hosting  
 - Marketing & customer acquisition  
-- Farmer training & audits  
-- Operations & logistics  
+- Doctor, lab, and pharmacy onboarding  
+- Operations & support  
 - Partnerships & compliance  
-- Risk management & insurance  
+- Data security & insurance  
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer     | Technology |
-|-----------|------------|
-| Frontend  | React.js, Tailwind CSS, HTMX, Alpine.js |
-| Backend   | Go (Fiber), REST APIs |
-| Database  | PostgreSQL (NeonDB), MongoDB |
-| Auth      | Clerk (JWT + Social Logins) |
-| Hosting   | Railway, Vercel, Docker |
+| Layer       | Technology |
+|------------|------------|
+| Frontend   | React.js, Tailwind CSS, HTMX, Alpine.js |
+| Backend    | Go (Fiber), REST APIs |
+| Database   | PostgreSQL (NeonDB), MongoDB |
+| Auth       | Clerk (JWT + Social Logins) |
+| Payment    | Stripe, Paystack, Flutterwave |
+| Hosting    | Railway, Vercel, Docker |
+| Security   | End-to-end encryption, PCI compliance |
+| Analytics  | Patient usage, **LiveRight Card analytics**, health KPIs |
 
 ---
 
 ## 🚀 Roadmap
 
-- ✅ Farm model & API setup  
-- 🔄 Farm investment logic + wallet system  
-- 🔒 Secure authentication (Clerk + JWT)  
-- 🛒 Food marketplace launch  
-- 🌍 Diaspora subscription packages  
-- 📊 Data & analytics dashboards  
+- ✅ Doctor & hospital profile setup  
+- 🔄 Appointment booking & teleconsultation  
+- 🧪 Lab test & pharmacy integration  
+- 💳 **LiveRight Card wallet implementation**  
+- 🔒 Secure authentication & authorization  
+- 💳 Payment & insurance claim processing  
+- 📊 Analytics dashboards for patients, providers, and card usage  
+- 🌍 Expansion to corporate & family health packages  
 
 ---
 
 ## 📅 Expected Release
 
-🟢 **MVP Launch** → **January 6, 2026**  
+🟢 **MVP Launch** → **March 2026**  
 
 ---
 
@@ -146,4 +151,4 @@ MIT License — build, use, and expand responsibly.
 
 ## 💡 Quote of the Build
 
-> _"Don’t just build for profit. Build to solve a real, local problem."_
+> _"Healthcare is a right, not a privilege. Build systems that put patients first."_  
