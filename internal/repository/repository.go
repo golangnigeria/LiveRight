@@ -15,5 +15,6 @@ import (
 // PostgreSQL, MongoDB, or any other database engine.
 type DatabaseRepo interface {
 	Connection() *sql.DB
-	AllDoctors() ([]*models.Doctor, error)
+	GetUserByEmail(email string) (*models.User, error)
+	InsertUser(user *models.User) (*models.User, error)
 }

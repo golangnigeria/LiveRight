@@ -7,7 +7,7 @@ package dbrepo
 import (
 	"context"
 	"database/sql"
-	"fmt"
+	"errors"
 	"time"
 
 	"github.com/golangnigeria/liveright_backend/internal/models"
@@ -26,65 +26,43 @@ func (m *PostgresDBRepo) Connection() *sql.DB {
 	return m.DB
 }
 
-// AllDoctors returns a list of all doctors stored in the database.
-// It executes a SELECT query and maps the result to the Doctor model.
-func (m *PostgresDBRepo) AllDoctors() ([]*models.Doctor, error) {
+func (m *PostgresDBRepo) GetUserByEmail(email string) (*models.User, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), dbTimeout)
 	defer cancel()
 
-	query := `
-        SELECT
-            id,
-            first_name,
-            last_name,
-            email,
-            phone,
-            specialization,
-            years_of_experience,
-            bio,
-            coalesce(profile_image,''),
-            created_at,
-            updated_at
-        FROM doctors
-        ORDER BY id;
-    `
+	query := ` 
+				SELECT id, created_at, first_name, last_name, email, password_hash, role_id,
+				phone, active from users where email = $1
+	`
 
-	rows, err := m.DB.QueryContext(ctx, query)
+	var user models.User
+	var roleID int64
+	var phone sql.NullString
+
+	row := m.DB.QueryRowContext(ctx, query, email)
+
+	err := row.Scan(
+		&user.ID,
+		&user.CreatedAt,
+		&user.FirstName,
+		&user.LastName,
+		&user.Email,
+		&user.PasswordHash,
+		&roleID,
+		&phone,
+		&user.Active,
+	)
 	if err != nil {
+		if errors.Is(err, sql.ErrNoRows) {
+			return nil, sql.ErrNoRows
+		}
 		return nil, err
 	}
 
-	defer func() {
-		err := rows.Close()
-		if err != nil {
-			fmt.Println("Error closing rows", err)
-		}
-	}()
-
-	var doctors []*models.Doctor
-
-	for rows.Next() {
-		var d models.Doctor
-
-		err := rows.Scan(
-			&d.ID,
-			&d.FirstName,
-			&d.LastName,
-			&d.Email,
-			&d.Phone,
-			&d.Specialization,
-			&d.YearsOfExperience,
-			&d.Bio,
-			&d.ProfileImage,
-			&d.CreatedAt,
-			&d.UpdatedAt,
-		)
-		if err != nil {
-			return nil, err
-		}
-
-		doctors = append(doctors, &d)
+	user.RoleID = models.Role{ID: roleID}
+	if phone.Valid {
+		user.Phone = &phone.String
 	}
 
-	return doctors, nil
+	return &user, nil
 }

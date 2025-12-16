@@ -36,7 +36,7 @@ func main() {
 	var app application
 
 	// Set flags, default to environment variables if they exist
-	flag.StringVar(&app.DSN, "dsn", os.Getenv("DSN"), "Postgres DSN")
+	flag.StringVar(&app.DSN, "dsn", os.Getenv("DATABASE_URL"), "Postgres DSN")
 	flag.StringVar(&app.JwtSecret, "jwt-secret", os.Getenv("JWT_SECRET"), "Signing secret")
 	flag.StringVar(&app.JWTIssuer, "jwt-issuer", os.Getenv("JWT_ISSUER"), "Signing issuer")
 	flag.StringVar(&app.JWTAudienc, "jwt-audience", os.Getenv("JWT_AUDIENCE"), "Signing audience")

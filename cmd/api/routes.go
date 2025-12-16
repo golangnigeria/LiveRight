@@ -15,8 +15,7 @@ func (app *application) routes() http.Handler {
 	mux.Use(app.enableCORS)
 
 	mux.Get("/", app.Home)
-	mux.Get("/all-doctors", app.AllDoctors)
-	mux.Get("/authenticate", app.Authenticate)
-
+	mux.Post("/auth/authenticate", app.Authenticate)
+	mux.Post("/auth/register/patient", app.RegisterPatient)
 	return mux
 }
