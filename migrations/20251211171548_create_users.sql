@@ -1,6 +1,6 @@
 -- +goose Up
 CREATE TABLE IF NOT EXISTS users (
-    id BIGSERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY,
     created_at TIMESTAMPTZ DEFAULT now(),
     first_name TEXT NOT NULL,
     last_name TEXT NOT NULL,
@@ -15,5 +15,6 @@ CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 
 -- +goose Down
 DROP INDEX IF EXISTS idx_users_email;
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS users CASCADE;
+
 

@@ -17,6 +17,6 @@ INSERT INTO roles (id, name, created_at) VALUES (6, 'admin', now()) ON CONFLICT 
 
 -- +goose Down
 DELETE FROM roles WHERE id IN (1,2,3,4,5,6);
-DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS roles CASCADE;
 DROP EXTENSION IF EXISTS citext;
 

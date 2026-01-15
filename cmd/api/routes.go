@@ -16,6 +16,6 @@ func (app *application) routes() http.Handler {
 
 	mux.Get("/", app.Home)
 	mux.Post("/auth/authenticate", app.Authenticate)
-	mux.Post("/auth/register/patient", app.RegisterPatient)
+	mux.Post("/auth/register/patient", app.Register)
 	return mux
 }

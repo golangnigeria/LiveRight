@@ -21,6 +21,7 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/gofrs/uuid"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -55,7 +56,7 @@ func (e *Email) Scan(value any) error {
 
 // User represents a system user (patient, doctor, admin, etc.)
 type User struct {
-	ID           int64     `json:"id" db:"id"`
+	ID           uuid.UUID `json:"id" db:"id"`
 	CreatedAt    time.Time `json:"created_at" db:"created_at"`
 	FirstName    string    `json:"first_name" db:"first_name"`
 	LastName     string    `json:"last_name" db:"last_name"`

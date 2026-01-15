@@ -23,8 +23,8 @@ import (
 
 func (m *PostgresDBRepo) InsertUser(user *models.User) (*models.User, error) {
 	query := `
-    INSERT INTO users (first_name, last_name, email, password_hash, role_id, phone, active)
-    VALUES ($1, $2, $3, $4, $5, $6, $7)
+    INSERT INTO users (id, first_name, last_name, email, password_hash, role_id, phone, active)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
     RETURNING id, created_at
 `
 
@@ -36,6 +36,7 @@ func (m *PostgresDBRepo) InsertUser(user *models.User) (*models.User, error) {
 
 	err := m.DB.QueryRow(
 		query,
+		user.ID,
 		user.FirstName,
 		user.LastName,
 		user.Email,
@@ -49,6 +50,7 @@ func (m *PostgresDBRepo) InsertUser(user *models.User) (*models.User, error) {
 	}
 
 	// Fill the rest from input
+	inserted.ID = user.ID
 	inserted.FirstName = user.FirstName
 	inserted.LastName = user.LastName
 	inserted.Email = user.Email

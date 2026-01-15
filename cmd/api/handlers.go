@@ -4,6 +4,7 @@ import (
 	"errors"
 	"log"
 	"net/http"
+	"strconv"
 
 	"github.com/golangnigeria/liveright_backend/internal/models"
 )
@@ -51,9 +52,9 @@ func (app *application) Authenticate(w http.ResponseWriter, r *http.Request) {
 
 	// create a jwt User
 	u := jwtUser{
-		ID:        userEmail.ID,
+		ID:        userEmail.ID.String(),
 		FirstName: userEmail.FirstName,
-	} 
+	}
 
 	// generate token
 	tokens, err := app.auth.GenerateTokenPair(&u)
@@ -78,13 +79,14 @@ func (app *application) Authenticate(w http.ResponseWriter, r *http.Request) {
 }
 
 // RegisterPatient
-func (app *application) RegisterPatient(w http.ResponseWriter, r *http.Request) {
+func (app *application) Register(w http.ResponseWriter, r *http.Request) {
 	var payload struct {
 		FirstName string `json:"first_name"`
 		LastName  string `json:"last_name"`
 		Email     string `json:"email"`
 		Password  string `json:"password"`
-		Phone     string `json:"phone,omitempty"`
+		Phone     string `json:"phone"`
+		RoleID    string  `json:"role_id"`
 	}
 
 	if err := app.readJSON(w, r, &payload); err != nil {
@@ -99,13 +101,19 @@ func (app *application) RegisterPatient(w http.ResponseWriter, r *http.Request) 
 		return
 	}
 
+	roleID, err := strconv.Atoi(payload.RoleID)
+	if err != nil {
+		_ = app.errorJSON(w, errors.New("invalid role ID"), http.StatusBadRequest)
+		return
+	}
+
 	u := &models.User{
 		FirstName: payload.FirstName,
 		LastName:  payload.LastName,
 		Email:     models.Email(payload.Email),
-		Phone:     &payload.Phone,
+		Phone:     &payload.Phone,	
 		Active:    true,
-		RoleID:    models.Role{ID: 1}, // patient
+		RoleID:    models.Role{ID: int64(roleID)},
 	}
 	if err := u.HashPassword(payload.Password); err != nil {
 		_ = app.errorJSON(w, errors.New("unable to hash password"), http.StatusInternalServerError)
@@ -119,7 +127,7 @@ func (app *application) RegisterPatient(w http.ResponseWriter, r *http.Request) 
 	}
 
 	j := jwtUser{
-		ID:        newUser.ID,
+		ID:        newUser.ID.String(),
 		FirstName: newUser.FirstName,
 		LastName:  newUser.LastName,
 	}
@@ -142,5 +150,3 @@ func (app *application) RegisterPatient(w http.ResponseWriter, r *http.Request) 
 		"tokens": tokens,
 	})
 }
-
-

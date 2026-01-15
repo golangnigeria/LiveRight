@@ -16,7 +16,14 @@ migrate:
 # Run migrations and then start the server
 .PHONY: dev
 dev:
-	@echo "Running migrations and starting the server..."
+	@echo "Running database migrations..."
+	goose -allow-missing -env $(ENV_FILE) -dir $(MIGRATIONS_DIR) up
+	@echo "Starting the server..."
+	$(GO_CMD)
+
+# Run server only (no migrations)
+run:
+	@echo "Starting LiveRight API..."
 	$(GO_CMD)
 
 # Rollback last migration
