@@ -19,6 +19,7 @@ type Auth struct {
 	CookieName    string
 }
 
+
 type jwtUser struct {
 	ID        int64  `json:"id"`
 	FirstName string `json:"first_name"`
@@ -43,6 +44,7 @@ func (j *Auth) GenerateTokenPair(user *jwtUser) (TokenPairs, error) {
 	claims := token.Claims.(jwt.MapClaims)
 	claims["name"] = fmt.Sprintf("%s%s", user.FirstName, user.LastName)
 	claims["sub"] = fmt.Sprintf("%d", user.ID)
+	claims["role"] = fmt.Sprintf("%s", user.Role)
 	claims["aud"] = j.Audience
 	claims["iss"] = j.Issuer
 	claims["iat"] = time.Now().UTC().Unix()
