@@ -13,8 +13,6 @@ import (
 	"github.com/joho/godotenv"
 )
 
-const port = 8080
-
 type application struct {
 	Domain       string
 	DSN          string
@@ -24,6 +22,7 @@ type application struct {
 	JWTIssuer    string
 	JWTAudienc   string
 	CookieDomain string
+	PORT         string
 }
 
 func main() {
@@ -36,12 +35,13 @@ func main() {
 	var app application
 
 	// Set flags, default to environment variables if they exist
-	flag.StringVar(&app.DSN, "dsn", os.Getenv("DATABASE_URL"), "Postgres DSN")
+	flag.StringVar(&app.DSN, "dsn", os.Getenv("GOOSE_DBSTRING"), "Postgres DSN")
 	flag.StringVar(&app.JwtSecret, "jwt-secret", os.Getenv("JWT_SECRET"), "Signing secret")
 	flag.StringVar(&app.JWTIssuer, "jwt-issuer", os.Getenv("JWT_ISSUER"), "Signing issuer")
 	flag.StringVar(&app.JWTAudienc, "jwt-audience", os.Getenv("JWT_AUDIENCE"), "Signing audience")
 	flag.StringVar(&app.CookieDomain, "cookie-domain", os.Getenv("COOKIE_DOMAIN"), "Cookie domain")
 	flag.StringVar(&app.Domain, "domain", os.Getenv("DOMAIN"), "Domain")
+	flag.StringVar(&app.PORT, "port", os.Getenv("PORT"), "port giving")
 
 	flag.Parse()
 
@@ -71,10 +71,10 @@ func main() {
 		CookieDomain:  app.Domain,
 	}
 
-	log.Println("Starting application on port", port)
+	log.Println("Starting application on port", app.PORT)
 
 	// Start the web server
-	err = http.ListenAndServe(fmt.Sprintf(":%d", port), app.routes())
+	err = http.ListenAndServe(fmt.Sprintf(":%s", app.PORT), app.routes())
 	if err != nil {
 		log.Fatal(err)
 	}

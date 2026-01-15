@@ -53,7 +53,7 @@ func (app *application) Authenticate(w http.ResponseWriter, r *http.Request) {
 	u := jwtUser{
 		ID:        userEmail.ID,
 		FirstName: userEmail.FirstName,
-	}
+	} 
 
 	// generate token
 	tokens, err := app.auth.GenerateTokenPair(&u)
@@ -142,3 +142,5 @@ func (app *application) RegisterPatient(w http.ResponseWriter, r *http.Request) 
 		"tokens": tokens,
 	})
 }
+
+

@@ -9,14 +9,14 @@ GO_CMD = go run ./cmd/api
 .PHONY: migrate
 migrate:
 	@echo "Applying migrations from $(MIGRATIONS_DIR) using Goose..."
-	goose -env $(ENV_FILE) -dir $(MIGRATIONS_DIR) up
+	goose -allow-missing -env $(ENV_FILE) -dir $(MIGRATIONS_DIR) up
 	@echo "Migrations applied successfully!"
+
 
 # Run migrations and then start the server
 .PHONY: dev
 dev:
 	@echo "Running migrations and starting the server..."
-	$(MAKE) migrate
 	$(GO_CMD)
 
 # Rollback last migration
